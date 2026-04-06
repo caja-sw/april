@@ -1,0 +1,24 @@
+{% extends "main/base.html" %}
+{% block head %}
+  <title>심플 메모</title>
+{% endblock head %}
+{% block body %}
+  <h1>심플 메모</h1>
+  <form method="post" action="{% url "memo_create" %}">
+    {% csrf_token %}
+    <textarea name="content" placeholder="메모를 입력하세요" required></textarea>
+    <button type="submit">등록</button>
+  </form>
+  <hr>
+  <ul>
+    {% for memo in memos %}
+      <li>
+        {{ memo.content }}
+        <small>({{ memo.created_at|date:"Y-m-d H:i" }})</small>
+        <a href="{% url "memo_delete" memo.pk %}">삭제</a>
+      </li>
+    {% empty %}
+      <li>작성된 메모가 없습니다.</li>
+    {% endfor %}
+  </ul>
+{% endblock body %}

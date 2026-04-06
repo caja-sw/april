@@ -1,0 +1,32 @@
+{
+  "name": "April",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "batisteo.vscode-django",
+        "charliermarsh.ruff",
+        "github.vscode-github-actions",
+        "monosans.djlint",
+        "ms-azuretools.vscode-containers"
+      ],
+      "settings": {
+        "[python]": {
+          "editor.defaultFormatter": "charliermarsh.ruff",
+          "editor.formatOnSave": true,
+          "editor.codeActionsOnSave": {
+            "source.organizeImports.ruff": "always",
+            "source.fixAll.ruff": "always"
+          }
+        },
+        "[django-html]": {
+          "editor.defaultFormatter": "monosans.djlint",
+          "editor.formatOnSave": true
+        },
+        "djlint.executablePath": "uv run djlint"
+      }
+    }
+  }
+}
