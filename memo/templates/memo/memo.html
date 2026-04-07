@@ -14,18 +14,20 @@
         <button type="submit">메모 등록하기</button>
       </form>
     </div>
-    <ul>
-      {% for memo in memos %}
-        <li class="memo-item">
-          <div class="memo-content">{{ memo.content }}</div>
-          <div class="memo-footer">
-            <small>{{ memo.created_at|date:"Y-m-d H:i" }}</small>
-            <a href="{% url 'memo_delete' memo.pk %}" class="delete-btn">삭제</a>
-          </div>
-        </li>
-      {% empty %}
-        <p class="empty-msg">아직 작성된 메모가 없어요. 첫 메모를 남겨보세요!</p>
-      {% endfor %}
-    </ul>
+    {% if memos %}
+      <ul>
+        {% for memo in memos %}
+          <li class="memo-item">
+            <div class="memo-content">{{ memo.content }}</div>
+            <div class="memo-footer">
+              <small>{{ memo.created_at|date:"Y-m-d H:i" }}</small>
+              <a href="{% url 'memo_delete' memo.pk %}" class="delete-btn">삭제</a>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="empty-msg">아직 작성된 메모가 없어요. 첫 메모를 남겨보세요!</p>
+    {% endif %}
   </div>
 {% endblock body %}
