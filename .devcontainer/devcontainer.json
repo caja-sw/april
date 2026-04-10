@@ -14,17 +14,16 @@
         "ms-azuretools.vscode-containers"
       ],
       "settings": {
+        "editor.formatOnSave": true,
         "[python]": {
           "editor.defaultFormatter": "charliermarsh.ruff",
-          "editor.formatOnSave": true,
           "editor.codeActionsOnSave": {
             "source.organizeImports.ruff": "always",
             "source.fixAll.ruff": "always"
           }
         },
         "[django-html]": {
-          "editor.defaultFormatter": "monosans.djlint",
-          "editor.formatOnSave": true
+          "editor.defaultFormatter": "monosans.djlint"
         },
         "djlint.executablePath": "uv run djlint"
       }
